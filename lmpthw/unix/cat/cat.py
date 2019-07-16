@@ -8,14 +8,6 @@ def init_args() -> argparse.ArgumentParser:
     parser.add_argument(
         "files", type=str, nargs="+", help="an integer for the accumulator"
     )
-    parser.add_argument(
-        "--sum",
-        dest="accumulate",
-        action="store_const",
-        const=sum,
-        default=max,
-        help="sum the integers (default: find the max)",
-    )
 
     return parser.parse_args()
 
@@ -24,12 +16,8 @@ def get_file_list() -> List[str]:
     return init_args().files
 
 
-def print_file(file):
-    pass
-
-
-def get_text_from_file(file) -> str:
-    with open(file, "r") as f:
+def get_text_from_file(file_path: str) -> str:
+    with open(file_path, "r") as f:
         return f.read()
 
 
